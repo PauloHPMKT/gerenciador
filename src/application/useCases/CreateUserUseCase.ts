@@ -11,8 +11,16 @@ export class CreateUserUseCase {
 
   async execute(body: CreateUserDto) {
     // verificar se o usuário já existe
+    // const existingUser = await this.userRepository.findByEmail(body.email);
+    // if (existingUser) {
+    //   throw new Error('User already exists');
+    // }
 
-    // criptografar a senha 
+    // verificar e criptografar a senha 
+    if (body.password !== body.confirmPassword) {
+      throw new Error('Senha e confirmação de senha não são iguais');
+    }
+
     const password = await this.criptPassword.encrypt(body.password);
 
     const user = new User({
@@ -20,10 +28,8 @@ export class CreateUserUseCase {
       email: body.email,
       registry: body.registry,
       password,
-      confirmPassword: body.confirmPassword,
-    })
-
-    // verificar se a senha e a confirmação de senha são iguais
+      confirmPassword: password,
+    });
 
     // criar o usuário
     return this.userRepository.create(user);
