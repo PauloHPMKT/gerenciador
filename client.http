@@ -1,0 +1,10 @@
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "name": "Gaspar Santos Nascimento",
+  "email": "gasparito@email.com",
+  "registry": "1234567890",
+  "password": "123@abc",
+  "confirmPassword": "123@abc" 
+}
