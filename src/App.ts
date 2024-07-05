@@ -1,3 +1,4 @@
+import cors from "cors";
 import express, { Application } from "express";
 import { Routes } from "./routes";
 import { dbConnection } from "./infra/db";
@@ -16,6 +17,7 @@ export class App {
   setMiddlewares() {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(cors())
   }
 
   initRoutes() {
