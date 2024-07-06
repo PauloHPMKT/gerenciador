@@ -1,4 +1,4 @@
-import { Authenticator } from "../../../infra/authAdapter/auth.adapter";
+import { Authenticator } from "../../../infra/adapters/authAdapter/auth.adapter";
 import { UserRepository } from "../../../application/repositories/user.repository";
 import { LoginAuthDto } from "../../../presentation/dto/auth/LoginAuthDto";
 import { User } from "../../../domain/entities/User";

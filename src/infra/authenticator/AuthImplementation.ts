@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { User } from "../../domain/entities/User";
-import { Authenticator, Encripter } from "../../infra";
+import { Authenticator } from "../../infra";
 import { UserPayload, UserToken } from '../../presentation/dto/auth/UserTokenDto';
+import { EncriptAdapter } from '../adapters/encriptAdapter/encript.adapter';
 
 export class AuthImplementation implements Authenticator {
-  constructor(private readonly encripter: Encripter) {}
+  constructor(private readonly encripter: EncriptAdapter) {}
 
   validatePassword(password: string, hash: string): Promise<boolean> {
     return this.encripter.compare(password, hash);

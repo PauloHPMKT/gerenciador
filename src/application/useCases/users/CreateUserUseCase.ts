@@ -1,12 +1,12 @@
-import { Encripter } from "../../../infra/encripter/bcrypt";
 import { UserRepository } from "../../repositories/user.repository";
 import { CreateUserDto } from "../../../presentation/dto/users/CreateUserDto";
 import { User } from "../../../domain/entities/User";
+import { EncriptAdapter } from "../../../infra/adapters/encriptAdapter/encript.adapter";
 
 export class CreateUserUseCase {
   constructor(
     private readonly userRepository: UserRepository,
-    private readonly criptPassword: Encripter,
+    private readonly criptPassword: EncriptAdapter,
   ) {}
 
   async execute(body: CreateUserDto) {
