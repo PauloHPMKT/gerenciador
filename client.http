@@ -6,5 +6,9 @@ Content-Type: application/json
   "email": "gasparito@email.com",
   "registry": "1234567890",
   "password": "123@abc",
-  "confirmPassword": "123@a" 
+  "confirmPassword": "123@abc",
+  "role": "admin"
 }
+###
+
+GET http://localhost:3000/users

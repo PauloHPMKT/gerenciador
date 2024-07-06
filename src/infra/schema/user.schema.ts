@@ -1,3 +1,4 @@
+import { User } from "domain/entities/User";
 import mongoose, { Schema } from "mongoose";
 
 export interface UserProps {
@@ -6,6 +7,7 @@ export interface UserProps {
   registry: string;
   password: string;
   confirmPassword: string;
+  role: User.Role;
   avatar: string;
   createdAt: Date;
 }
@@ -28,6 +30,10 @@ const UserSchema = new Schema<UserProps>({
     required: true,
   },
   confirmPassword: {
+    type: String,
+    required: true,
+  },
+  role: {
     type: String,
     required: true,
   },

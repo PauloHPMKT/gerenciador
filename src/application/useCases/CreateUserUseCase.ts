@@ -29,6 +29,7 @@ export class CreateUserUseCase {
       registry: body.registry,
       password,
       confirmPassword: password,
+      role: body.role,
     });
 
     // criar o usuário

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUserController } from "../presentation";
+import { createUserController, findAllUsersController } from "../presentation";
 
 export class Routes {
   public router: Router;
@@ -10,8 +10,12 @@ export class Routes {
   }
 
   routerInitializate() {
-    this.router.post('/user', (req, res) => {
-      return createUserController.handle(req, res)
-    })
+    this.router.post('/user', (req, res) => (
+      createUserController.handle(req, res)
+    ))
+
+    this.router.get('/users', (req, res) => (
+      findAllUsersController.handle(req, res)
+    ))
   }
 }

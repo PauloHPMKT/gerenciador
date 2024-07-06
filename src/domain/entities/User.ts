@@ -7,6 +7,7 @@ export class User {
   public registry: string;
   public password: string;
   public confirmPassword: string; 
+  public role: User.Role;
   public avatar?: string; 
   public createdAt?: Date;
 
@@ -16,4 +17,8 @@ export class User {
     this.avatar = this.avatar ?? null;
     this._id = _id || randomBytes(12).toString('hex');
   }
+}
+
+export namespace User {
+  export type Role = 'admin' | 'user';
 }
