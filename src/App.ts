@@ -1,5 +1,10 @@
+import express, {
+  Application, 
+  json, 
+  urlencoded 
+} from "express";
 import cors from "cors";
-import express, { Application } from "express";
+import morgan from "morgan";
 import { Routes } from "./routes";
 import { dbConnection } from "./infra/db";
 
@@ -15,9 +20,14 @@ export class App {
   }
 
   setMiddlewares() {
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.app.use(cors())
+    const middlewares = [
+      json(),
+      urlencoded({ extended: true }),
+      cors(),
+      morgan('dev')
+    ]
+
+    middlewares.forEach(middleware => this.app.use(middleware))
   }
 
   initRoutes() {
