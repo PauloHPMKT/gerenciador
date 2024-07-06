@@ -1,21 +1,32 @@
 import { Router } from "express";
-import { createUserController, findAllUsersController } from "../presentation";
+import { 
+  createUserController,
+  findAllUsersController, 
+  loginController 
+} from "./handler";
 
 export class Routes {
   public router: Router;
 
   constructor() {
     this.router = Router();
-    this.routerInitializate()
+    this.userRoutesInitializate();
+    this.authRouteInitialization();
   }
 
-  routerInitializate() {
+  userRoutesInitializate() {
     this.router.post('/user', (req, res) => (
       createUserController.handle(req, res)
     ))
 
     this.router.get('/users', (req, res) => (
       findAllUsersController.handle(req, res)
+    ))
+  }
+
+  authRouteInitialization() {
+    this.router.post('/login', (req, res) => (
+      loginController.handle(req, res)
     ))
   }
 }

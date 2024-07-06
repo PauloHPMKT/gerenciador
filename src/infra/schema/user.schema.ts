@@ -1,18 +1,7 @@
 import { User } from "domain/entities/User";
 import mongoose, { Schema } from "mongoose";
 
-export interface UserProps {
-  name: string;
-  email: string;
-  registry: string;
-  password: string;
-  confirmPassword: string;
-  role: User.Role;
-  avatar: string;
-  createdAt: Date;
-}
-
-const UserSchema = new Schema<UserProps>({
+const UserSchema = new Schema<User>({
   name: {
     type: String,
     required: true,
@@ -36,6 +25,10 @@ const UserSchema = new Schema<UserProps>({
   role: {
     type: String,
     required: true,
+  },
+  active: {
+    type: Boolean,
+    default: true,
   },
   avatar: {
     type: String,

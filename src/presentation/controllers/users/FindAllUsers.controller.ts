@@ -1,6 +1,6 @@
 import { Request, Response } from "express"; 
-import { User } from "../../domain/entities/User";
-import { FindAllUsersUseCase } from "../../application/useCases/FindAllUsersUseCase";
+import { User } from "../../../domain/entities/User";
+import { FindAllUsersUseCase } from "../../../application/useCases/users/FindAllUsersUseCase";
 
 export class FindAllUsersController {
   constructor(private findAllUsersUseCase: FindAllUsersUseCase) {}

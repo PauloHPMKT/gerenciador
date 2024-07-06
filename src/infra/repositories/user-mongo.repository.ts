@@ -1,7 +1,7 @@
 import { User } from "../../domain/entities/User";
-import { UserRepository } from "../../domain/repositories/user.repository";
+import { UserRepository } from "../../application/repositories/user.repository";
 import { userSchema } from "../../infra/schema/user.schema";
-import { CreateUserDto } from "presentation/dto/CreateUserDto";
+import { CreateUserDto } from "../../presentation/dto/users/CreateUserDto";
 
 export class UserMongoRepository implements UserRepository {
   async create(user: CreateUserDto): Promise<User> {
@@ -12,5 +12,18 @@ export class UserMongoRepository implements UserRepository {
   async findAll(): Promise<User[]> {
     const users = await userSchema.find();
     return users.map(user => user.toObject() as User);
+  }
+
+  async verify(data: Partial<User>): Promise<boolean> {
+    const exists = await userSchema.exists(data);
+    if (!exists) {
+      return;
+    }
+    return true;
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    const user = await userSchema.findOne({ email });
+    return user.toObject() as User;
   }
 }

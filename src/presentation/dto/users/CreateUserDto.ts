@@ -1,4 +1,4 @@
-import { User } from "domain/entities/User";
+import { Permission, User } from "domain/entities/User";
 
 export class CreateUserDto {
   public name: string;
@@ -6,5 +6,5 @@ export class CreateUserDto {
   public registry: string;
   public password: string;
   public confirmPassword: string; 
-  public role: User.Role;
+  public role: Permission.Role;
 }

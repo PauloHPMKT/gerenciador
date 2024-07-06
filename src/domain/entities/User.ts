@@ -7,18 +7,20 @@ export class User {
   public registry: string;
   public password: string;
   public confirmPassword: string; 
-  public role: User.Role;
+  public role: Permission.Role;
+  public active?: boolean;
   public avatar?: string; 
   public createdAt?: Date;
 
-  constructor(props: Omit<User, '_id' | 'avatar' | 'createdAt'>, _id?: string) {
+  constructor(props: Omit<User, '_id' | 'avatar' | 'active' | 'createdAt'>, _id?: string) {
     Object.assign(this, props);
-    this.createdAt = this.createdAt || new Date();
+    this.active = this.active ?? true;
     this.avatar = this.avatar ?? null;
+    this.createdAt = this.createdAt || new Date();
     this._id = _id || randomBytes(12).toString('hex');
   }
 }
 
-export namespace User {
+export namespace Permission {
   export type Role = 'admin' | 'user';
 }

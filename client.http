@@ -2,13 +2,22 @@ POST http://localhost:3000/user
 Content-Type: application/json
 
 {
-  "name": "Gaspar Santos Nascimento",
-  "email": "gasparito@email.com",
-  "registry": "1234567890",
+  "name": "Ana Paula Santos Nascimento",
+  "email": "anapaula10@email.com",
+  "registry": "14254536",
   "password": "123@abc",
   "confirmPassword": "123@abc",
-  "role": "admin"
+  "role": "user"
 }
 ###
 
 GET http://localhost:3000/users
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "email": "fernanda@email.com",
+  "password": "123@abc"
+}
