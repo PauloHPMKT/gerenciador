@@ -1,4 +1,5 @@
 import { randomBytes } from "crypto";
+import { UserModel } from "../models";
 
 export class User {
   public readonly _id: string;
@@ -12,7 +13,7 @@ export class User {
   public avatar?: string; 
   public createdAt?: Date;
 
-  constructor(props: Omit<User, '_id' | 'avatar' | 'active' | 'createdAt'>, _id?: string) {
+  constructor(props: UserModel.ToCreate, _id?: string) {
     Object.assign(this, props);
     this.active = this.active ?? true;
     this.avatar = this.avatar ?? null;

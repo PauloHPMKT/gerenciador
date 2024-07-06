@@ -31,7 +31,7 @@ export class App {
   }
 
   initRoutes() {
-    this.app.use('/', this.routes.router)
+    this.app.use(this.routes.router)
   }
 
   initServer(port: number) {

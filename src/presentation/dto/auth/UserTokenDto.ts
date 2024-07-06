@@ -1,8 +1,9 @@
-import { User } from "domain/entities/User";
+import { UserModel } from "../../../domain/models";
+import { User } from "../../../domain/entities/User";
 
 export interface UserToken {
   access_token: string;
-  user?: Omit<User, 'password'| 'confirmPassword'>;
+  user?: UserModel.ToLogin;
 }
 
 export interface UserPayload {

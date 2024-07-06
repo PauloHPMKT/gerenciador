@@ -2,8 +2,9 @@ import { Router } from "express";
 import { 
   createUserController,
   findAllUsersController, 
-  loginController 
+  loginController,
 } from "./handler";
+import { authMiddleware } from "../presentation";
 
 export class Routes {
   public router: Router;
@@ -19,7 +20,7 @@ export class Routes {
       createUserController.handle(req, res)
     ))
 
-    this.router.get('/users', (req, res) => (
+    this.router.get('/users', authMiddleware, (req, res) => (
       findAllUsersController.handle(req, res)
     ))
   }

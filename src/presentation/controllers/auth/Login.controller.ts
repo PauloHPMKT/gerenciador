@@ -4,7 +4,7 @@ import { LoginUseCase } from "../../../application/useCases/auth/LoginUseCase";
 export class LoginController {
   constructor(private readonly loginUseCase: LoginUseCase) {}
 
-  async handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response):Promise<Response> {
     try {
       const { email, password } = req.body;
       const user = await this.loginUseCase.validateUser({ email, password });
