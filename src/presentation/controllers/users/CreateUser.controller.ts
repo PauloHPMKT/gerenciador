@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { CreateUserUseCase } from "../../../application/useCases/users/CreateUserUseCase";
-import { User } from "domain/entities/User";
+import { User } from "../../../domain/entities/User";
 
 export class CreateUserController {
   constructor(private readonly createUserUseCase: CreateUserUseCase) {}
 
   async handle(req: Request, res: Response): Promise<Response<User>> {
     try {
-      const { name, email, registry, password, confirmPassword, role, active } = req.body;
+      const { name, email, registry, password, confirmPassword, role } = req.body;
   
       const user = {
         name,

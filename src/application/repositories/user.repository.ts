@@ -6,4 +6,6 @@ export interface UserRepository {
   findAll(): Promise<User[]>;
   verify(data: Partial<User>): Promise<boolean>;
   findByEmail(email: string): Promise<User>;
+  findById(id: string): Promise<User>;
+  updateActiveStatus(id: string, status: boolean): Promise<void>;
 }

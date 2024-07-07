@@ -26,4 +26,18 @@ export class UserMongoRepository implements UserRepository {
     const user = await userSchema.findOne({ email });
     return user.toObject() as User;
   }
+
+  async findById(id: string): Promise<User> {
+    const user = await userSchema.findById(id);
+    return user.toObject() as User;
+  }
+
+  async updateActiveStatus(id: string, status: boolean): Promise<void> {
+    await userSchema.findByIdAndUpdate(
+      { _id: id },
+      { 
+        $set: { active: status }
+      }
+    )
+  }
 }

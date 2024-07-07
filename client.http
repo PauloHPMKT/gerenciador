@@ -1,5 +1,5 @@
 @baseUrl = http://localhost:3000
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MWVkOTNiYjlkMzUyOGRhNDc2YzVhNGUiLCJuYW1lIjoiRmVybmFuZGEgU2FudG9zIE5hc2NpbWVudG8iLCJlbWFpbCI6ImZlcm5hbmRhQGVtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzIwMjk3NDYzLCJleHAiOjE3MjAzODM4NjN9.hTbWG74SrL8AdXIHFA1RZDdCp1gFHXIviii8b7h4N0w
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0MWVkOTNiYjlkMzUyOGRhNDc2YzVhNGUiLCJuYW1lIjoiRmVybmFuZGEgU2FudG9zIE5hc2NpbWVudG8iLCJlbWFpbCI6ImZlcm5hbmRhQGVtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImFjdGl2ZSI6dHJ1ZSwiaWF0IjoxNzIwMzg4OTg2LCJleHAiOjE3MjA0NzUzODZ9.5ay6AlTvu7sa2ZXga6O-MiwuaAdIe8Ofsny5UoofqOI
 
 POST {{baseUrl}}/user
 Content-Type: application/json
@@ -18,10 +18,29 @@ GET {{baseUrl}}/users
 Authorization: Bearer {{token}}
 ###
 
+PATCH {{baseUrl}}/user/bb784a01711e0b3536757c87
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "active": false 
+}
+###
+
 POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
   "email": "fernanda@email.com",
+  "password": "123@abc"
+}
+###
+
+### Teste de login para usuario inativo
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+  "email": "anapaula@email.com",
   "password": "123@abc"
 }

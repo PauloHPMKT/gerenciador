@@ -3,6 +3,7 @@ import {
   createUserController,
   findAllUsersController, 
   loginController,
+  managerActiveUserStatusController,
 } from "./handler";
 import { authMiddleware } from "../presentation";
 
@@ -22,6 +23,10 @@ export class Routes {
 
     this.router.get('/users', authMiddleware, (req, res) => (
       findAllUsersController.handle(req, res)
+    ))
+
+    this.router.patch('/user/:id', authMiddleware, (req, res) => (
+      managerActiveUserStatusController.handle(req, res)
     ))
   }
 
