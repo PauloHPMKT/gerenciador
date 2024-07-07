@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv";
 import { join } from "node:path";
-import { EnvConfigAdapter } from "../../infra/adapters/envconfigAdapter/envconfig.adapter";
+import { EnvConfigAdapter } from "../../infra";
 
 export class EnvConfig implements EnvConfigAdapter {
   constructor(private readonly environment?: string) {

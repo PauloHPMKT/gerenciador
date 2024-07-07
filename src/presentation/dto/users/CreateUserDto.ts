@@ -1,4 +1,4 @@
-import { Permission, User } from "domain/entities/User";
+import { Permission } from "../../../domain";
 
 export class CreateUserDto {
   public name: string;

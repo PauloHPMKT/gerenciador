@@ -6,15 +6,15 @@ import {
 import { 
   CreateUserUseCase, 
   FindAllUsersUseCase, 
+  ManagerActiveUserStatusUseCase,
   LoginUseCase 
-} from "../application/useCases";
+} from "../application";
 import { 
   CreateUserController,
   FindAllUsersController,
+  ManagerActiveUserStatusController,
   LoginController 
 } from "../presentation"
-import { ManagerActiveUserStatusController } from "../presentation/controllers/users/ManagetActiveUserStatus.controller";
-import { ManagerActiveUserStatusUseCase } from "../application/useCases/users/ManagerActiveUserStatusUseCase";
 
 const encript = new Encripter();
 const authenticator = new AuthImplementation(encript);

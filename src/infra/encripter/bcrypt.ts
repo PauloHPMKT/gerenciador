@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcrypt';
-import { EncriptAdapter } from '../adapters/encriptAdapter/encript.adapter';
+import { EncriptAdapter } from '../../infra';
 
 export class Encripter implements EncriptAdapter {
   async encrypt(password: string): Promise<string> {

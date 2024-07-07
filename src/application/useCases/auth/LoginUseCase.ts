@@ -1,8 +1,7 @@
-import { Authenticator } from "../../../infra/adapters/authAdapter/auth.adapter";
-import { UserRepository } from "../../../application/repositories/user.repository";
-import { LoginAuthDto } from "../../../presentation/dto/auth/LoginAuthDto";
-import { User } from "../../../domain/entities/User";
-import { UserToken } from "../../../presentation/dto/auth/UserTokenDto";
+import { LoginAuthDto, UserToken } from "../../../presentation";
+import { Authenticator } from "../../../infra";
+import { UserRepository } from "../../../application";
+import { User } from "../../../domain";
 
 export class LoginUseCase {
   constructor(

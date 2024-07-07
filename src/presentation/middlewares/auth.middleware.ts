@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { makeEnvConfigGlobal } from "../../presentation/config/envConfig.global";
+import { makeEnvConfigGlobal } from "../../presentation";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;

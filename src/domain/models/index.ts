@@ -1,4 +1,4 @@
-import { User } from "../entities/User";
+import { User } from "../../domain";
 
 export namespace UserModel {
   export type ToCreate = Omit<User, '_id' | 'avatar' | 'active' | 'createdAt'>;

@@ -1,5 +1,5 @@
-import mongoose, { ConnectOptions } from "mongoose"
-import { makeEnvConfigGlobal } from "../../presentation/config/envConfig.global";
+import mongoose from "mongoose"
+import { makeEnvConfigGlobal } from "../../presentation";
 
 export async function dbConnection() {
   const configService = makeEnvConfigGlobal();

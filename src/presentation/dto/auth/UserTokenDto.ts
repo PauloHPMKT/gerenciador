@@ -1,5 +1,4 @@
-import { UserModel } from "../../../domain/models";
-import { User } from "../../../domain/entities/User";
+import { UserModel } from "../../../domain";
 
 export interface UserToken {
   access_token: string;

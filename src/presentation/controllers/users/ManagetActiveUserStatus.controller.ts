@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
-import { 
-  ManagerActiveUserStatusUseCase 
-} from "../../../application/useCases/users/ManagerActiveUserStatusUseCase";
+import { ManagerActiveUserStatusUseCase } from "../../../application";
 
 export class ManagerActiveUserStatusController {
   constructor(

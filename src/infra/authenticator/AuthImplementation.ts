@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
-import { User } from "../../domain/entities/User";
-import { Authenticator } from "../../infra";
-import { UserPayload, UserToken } from '../../presentation/dto/auth/UserTokenDto';
-import { EncriptAdapter } from '../adapters/encriptAdapter/encript.adapter';
-import { makeEnvConfigGlobal } from '../../presentation/config/envConfig.global';
+import { 
+  UserPayload, 
+  UserToken, 
+  makeEnvConfigGlobal 
+} from '../../presentation';
+import { EncriptAdapter, Authenticator } from "../../infra";
+import { User } from "../../domain";
 
 export class AuthImplementation implements Authenticator {
   constructor(private readonly encripter: EncriptAdapter) {}

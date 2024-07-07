@@ -1,4 +1,4 @@
-import { EnvConfig } from "../../infra/envconfig/envconfig";
+import { EnvConfig } from "../../infra";
 
 export const makeEnvConfigGlobal = (): EnvConfig => {
   const configService = new EnvConfig("development");

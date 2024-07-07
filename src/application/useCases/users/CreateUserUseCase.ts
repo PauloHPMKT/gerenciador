@@ -1,7 +1,7 @@
-import { UserRepository } from "../../repositories/user.repository";
-import { CreateUserDto } from "../../../presentation/dto/users/CreateUserDto";
-import { User } from "../../../domain/entities/User";
-import { EncriptAdapter } from "../../../infra/adapters/encriptAdapter/encript.adapter";
+import { UserRepository } from "../../../application";
+import { CreateUserDto } from "../../../presentation";
+import { EncriptAdapter } from "../../../infra";
+import { User } from "../../../domain";
 
 export class CreateUserUseCase {
   constructor(

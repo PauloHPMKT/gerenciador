@@ -1,4 +1,4 @@
-import { UserRepository } from "../../repositories/user.repository";
+import { UserRepository } from "../../../application";
 
 export class ManagerActiveUserStatusUseCase {
   constructor(private readonly userRepository: UserRepository) {}

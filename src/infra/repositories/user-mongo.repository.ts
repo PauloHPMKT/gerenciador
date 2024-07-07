@@ -1,7 +1,7 @@
-import { User } from "../../domain/entities/User";
-import { UserRepository } from "../../application/repositories/user.repository";
-import { userSchema } from "../../infra/schema/user.schema";
-import { CreateUserDto } from "../../presentation/dto/users/CreateUserDto";
+import { User } from "../../domain";
+import { UserRepository } from "../../application";
+import { userSchema } from "../../infra";
+import { CreateUserDto } from "../../presentation";
 
 export class UserMongoRepository implements UserRepository {
   async create(user: CreateUserDto): Promise<User> {
