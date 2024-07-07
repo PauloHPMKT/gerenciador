@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+import { makeEnvConfigGlobal } from "../../presentation/config/envConfig.global";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
@@ -13,7 +14,8 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
   const [, token] = authorization.split(' ');
 
   try {
-    const decode = jwt.verify(token, '123!@#456$%¨879&*(0');
+    const configService = makeEnvConfigGlobal();
+    const decode = jwt.verify(token, configService.getSecretKey());
     req.body.user = decode;
 
     next();

@@ -3,6 +3,7 @@ import { User } from "../../domain/entities/User";
 import { Authenticator } from "../../infra";
 import { UserPayload, UserToken } from '../../presentation/dto/auth/UserTokenDto';
 import { EncriptAdapter } from '../adapters/encriptAdapter/encript.adapter';
+import { makeEnvConfigGlobal } from '../../presentation/config/envConfig.global';
 
 export class AuthImplementation implements Authenticator {
   constructor(private readonly encripter: EncriptAdapter) {}
@@ -12,7 +13,8 @@ export class AuthImplementation implements Authenticator {
   }
 
   generateToken(user: User): UserToken {
-    const secret = '123!@#456$%¨879&*(0';
+    const configService = makeEnvConfigGlobal();
+    const secret = configService.getSecretKey();
 
     const payload: UserPayload = {
       sub: user._id,

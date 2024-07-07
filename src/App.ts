@@ -7,6 +7,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { Routes } from "./routes";
 import { dbConnection } from "./infra/db";
+import { EnvConfig } from "./infra/envconfig/envconfig";
 
 export class App {
   private app: Application;
