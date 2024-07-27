@@ -23,6 +23,7 @@ export class CreateUserUseCase {
     const user = new User({
       name: body.name,
       email: body.email,
+      profession: body.profession,
       registry: body.registry,
       password,
       confirmPassword: password,

@@ -5,6 +5,7 @@ export class User {
   public readonly _id: string;
   public name: string;
   public email: string;
+  public profession: string;
   public registry: string;
   public password: string;
   public confirmPassword: string; 

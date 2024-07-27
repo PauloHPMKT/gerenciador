@@ -1,11 +1,10 @@
 import { Permission } from "../../../domain";
+import { CreateUserDto } from "./CreateUserDto";
 
-export class CreateUserDto {
+export class UpdateUserDto implements Partial<CreateUserDto> {
   public name: string;
   public email: string;
   public profession: string;
-  public registry: string;
   public password: string;
-  public confirmPassword: string; 
   public role: Permission.Role;
 }

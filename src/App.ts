@@ -1,22 +1,23 @@
 import express, {
   Application, 
   json, 
-  urlencoded 
+  urlencoded,
 } from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { Routes } from "./routes";
 import { dbConnection } from "./infra/db";
+import { resolve } from "path";
 
 export class App {
   private app: Application;
   public readonly routes = new Routes();
 
   constructor() {
+    dbConnection();
     this.app = express();
     this.setMiddlewares();
     this.initRoutes();
-    dbConnection();
   }
 
   setMiddlewares() {
@@ -24,10 +25,11 @@ export class App {
       json(),
       urlencoded({ extended: true }),
       cors(),
-      morgan('dev')
+      morgan('dev'),
     ]
 
     middlewares.forEach(middleware => this.app.use(middleware))
+    this.app.use('/uploads', express.static(resolve(__dirname, "../../..", "uploads")))
   }
 
   initRoutes() {

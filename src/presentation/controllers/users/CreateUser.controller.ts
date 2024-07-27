@@ -7,11 +7,12 @@ export class CreateUserController {
 
   async handle(req: Request, res: Response): Promise<Response<User>> {
     try {
-      const { name, email, registry, password, confirmPassword, role } = req.body;
+      const { name, email, profession, registry, password, confirmPassword, role } = req.body;
   
       const user = {
         name,
         email,
+        profession,
         registry,
         password,
         confirmPassword, 

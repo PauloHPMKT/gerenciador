@@ -4,8 +4,10 @@ import {
   findAllUsersController, 
   loginController,
   managerActiveUserStatusController,
+  updateUserAvatarController,
+  updateUserController
 } from "./handler";
-import { authMiddleware } from "../presentation";
+import { authMiddleware, upload } from "../presentation";
 
 export class Routes {
   public router: Router;
@@ -25,8 +27,19 @@ export class Routes {
       findAllUsersController.handle(req, res)
     ))
 
-    this.router.patch('/user/:id', authMiddleware, (req, res) => (
+    this.router.patch('/user/:id/status', authMiddleware, (req, res) => (
       managerActiveUserStatusController.handle(req, res)
+    ))
+
+    this.router.patch(
+      '/user/avatar/:id', 
+      authMiddleware, 
+      upload.single('avatar'), 
+      (req, res) => (updateUserAvatarController.handle(req, res)
+    ))
+
+    this.router.patch('/user/:id', authMiddleware, (req, res) => (
+      updateUserController.handle(req, res)
     ))
   }
 

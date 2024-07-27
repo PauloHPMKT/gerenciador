@@ -1,7 +1,7 @@
 import { User } from "../../domain";
 import { UserRepository } from "../../application";
 import { userSchema } from "../../infra";
-import { CreateUserDto } from "../../presentation";
+import { CreateUserDto, UpdateUserAvatarDto, UpdateUserDto } from "../../presentation";
 
 export class UserMongoRepository implements UserRepository {
   async create(user: CreateUserDto): Promise<User> {
@@ -38,6 +38,25 @@ export class UserMongoRepository implements UserRepository {
       { 
         $set: { active: status }
       }
+    )
+  }
+
+  async updateUserAvatar({ id, avatar }: UpdateUserAvatarDto) {
+    await userSchema.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: { avatar }
+      }
+    )
+  }
+
+  async updateUser(id: string, user: Partial<UpdateUserDto>) {
+    await userSchema.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: user
+      },
+      { new: true }
     )
   }
 }
